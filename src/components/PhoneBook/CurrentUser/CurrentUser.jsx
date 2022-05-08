@@ -7,6 +7,8 @@ const CurrentUser = ({ user }) => {
         {user.name.first} {user.name.last}
       </h2>
 
+      <p>{user.formatDate}</p>
+
       <img src={user.picture.medium} alt={user.name.last} width='70' />
 
       <p>

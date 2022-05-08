@@ -20,14 +20,24 @@ export function reducer (state, action) {
         currentUser: state.mapUsers.get(id),
       };
     }
+    default: {
+      return {
+        ...state,
+      };
+    }
   }
 }
 
 function mapUsersToId (users) {
   const userMap = new Map();
 
-  const a = users.forEach(el => {
-    userMap.set(el.id, el);
+  users.forEach(el => {
+    const date = new Date(el.dob.date);
+
+    const formatDate = `${date.getDay()}.${date.getMonth() +
+      1}.${date.getFullYear()}`;
+
+    userMap.set(el.id, { ...el, formatDate });
   });
 
   return userMap;
